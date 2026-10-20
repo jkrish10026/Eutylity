@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eutylity – Car posters, printed or downloaded</title>
+<meta name="description" content="Illustrated car posters. Order a physical print shipped to your door, or a high-resolution digital download.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%238DBCD8'/><rect y='38' width='100' height='24' fill='%23F0641E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9ECEE; --card:#F7F8F9; --ink:#0E1A2B; --muted:#4A586B;
+  --blue:#8DBCD8; --orange:#F0641E; --orange-dark:#C94A0C; --line:#C9D0D6;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--body)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.livery{height:10px;background:linear-gradient(var(--blue) 0 33%,var(--orange) 33% 66%,var(--blue) 66%)}
+
+header.top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1200px;margin:0 auto}
+.logo{font:900 28px/1 var(--display);letter-spacing:.02em;text-decoration:none}
+.cart-btn{display:flex;align-items:center;gap:10px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:600 15px var(--body);padding:9px 14px;cursor:pointer;border-radius:4px}
+.cart-btn:hover{background:var(--ink);color:#fff}
+.badge{background:var(--orange);color:#fff;min-width:22px;height:22px;border-radius:11px;font-size:13px;display:grid;place-items:center;padding:0 6px}
+
+.hero{max-width:1200px;margin:0 auto;padding:20px 20px 48px;display:grid;gap:28px;align-items:center}
+.hero h1{font:900 clamp(52px,12vw,120px)/.88 var(--display);margin:0 0 18px;letter-spacing:-.005em}
+.hero p{font-size:18px;max-width:46ch;margin:0 0 24px;color:var(--muted)}
+.hero .art{max-width:360px;width:100%;box-shadow:0 18px 40px -18px rgba(14,26,43,.6)}
+.btn{display:inline-block;border:0;background:var(--orange);color:#fff;font:600 16px var(--body);padding:13px 22px;border-radius:4px;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--orange-dark)}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.alt:hover{background:var(--ink);color:#fff}
+.btn[disabled]{opacity:.6;cursor:wait}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.formats{background:var(--ink);color:#fff}
+.formats .in{max-width:1200px;margin:0 auto;padding:28px 20px;display:grid;gap:22px}
+.formats h2{font:800 28px/1 var(--display);margin:0 0 6px}
+.formats p{margin:0;color:#C5CFDA;max-width:52ch}
+
+main{max-width:1200px;margin:0 auto;padding:48px 20px}
+.sec-title{font:900 clamp(36px,6vw,56px)/1 var(--display);margin:0 0 6px}
+.sec-sub{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;align-items:start;gap:26px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.card .art{background:var(--line)}
+.card .meta{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font:800 26px/1 var(--display);margin:0}
+.blurb{margin:0;color:var(--muted);font-size:14px}
+.fmt{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:4px;overflow:hidden}
+.fmt label{position:relative}
+.fmt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.fmt span{display:block;text-align:center;padding:8px;font-weight:600;font-size:14px}
+.fmt input:checked + span{background:var(--ink);color:#fff}
+.fmt input:focus-visible + span{outline:3px solid var(--orange);outline-offset:-3px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts label,.field label{font-size:13px;font-weight:600;display:grid;gap:4px}
+select,input[type=text],input[type=email],textarea{width:100%;font:16px var(--body);padding:9px 10px;border:1px solid #8D99A8;border-radius:4px;background:#fff;color:var(--ink)}
+textarea{resize:vertical;min-height:70px}
+.note{font-size:13px;color:var(--muted);margin:0;background:#E3EEF5;padding:8px 10px;border-left:4px solid var(--blue)}
+.buy{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:4px}
+.price{font:800 30px/1 var(--display)}
+.bundle-art{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;aspect-ratio:3/4;background:var(--ink)}
+.bundle-art svg,.bundle-art img{height:100%;width:100%;object-fit:cover}
+.art img{width:100%;height:auto}
+.tag{display:inline-block;background:var(--orange);color:#fff;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;width:max-content}
+
+#policies{background:var(--card);border-top:1px solid var(--line)}
+#policies .in{max-width:1200px;margin:0 auto;padding:44px 20px;display:grid;gap:28px}
+#policies h3{font:800 24px/1 var(--display);margin:0 0 8px}
+#policies p{margin:0;color:var(--muted);font-size:15px}
+footer{max-width:1200px;margin:0 auto;padding:24px 20px 40px;font-size:13px;color:var(--muted)}
+
+/* drawer */
+dialog#drawer{margin:0 0 0 auto;height:100dvh;max-height:100dvh;width:min(440px,100%);border:0;padding:0;background:var(--card);color:var(--ink)}
+dialog#drawer::backdrop{background:rgba(14,26,43,.55)}
+.dr{display:flex;flex-direction:column;height:100%}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dr-head h2{font:900 30px/1 var(--display);margin:0}
+.x{background:none;border:0;font-size:30px;line-height:1;cursor:pointer;color:var(--ink);padding:0 6px}
+#dr-body{overflow:auto;padding:16px 18px 24px;flex:1}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:start}
+.line .art{width:64px}
+.line h4{margin:0;font-size:15px}
+.line small{color:var(--muted);display:block}
+.qty{display:inline-flex;align-items:center;border:1px solid #8D99A8;border-radius:4px;margin-top:6px}
+.qty button{width:30px;height:30px;border:0;background:none;font-size:18px;cursor:pointer}
+.qty span{min-width:26px;text-align:center;font-size:14px}
+.rm{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13px;cursor:pointer;margin-left:10px}
+.sum{margin:16px 0;display:grid;gap:6px}
+.sum div{display:flex;justify-content:space-between;font-size:15px}
+.sum .tot{font:800 28px/1 var(--display);border-top:2px solid var(--ink);padding-top:10px;margin-top:4px}
+.field{margin-bottom:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;gap:10px;font-size:14px;align-items:flex-start;margin:14px 0}
+.check input{margin-top:4px}
+.err{color:#B3261E;font-size:14px;margin:8px 0}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+.stack{display:grid;gap:10px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:4px;font-size:14px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+
+@media(min-width:760px){
+  .hero{grid-template-columns:1.3fr .7fr;padding-top:36px}
+  .formats .in{grid-template-columns:1fr 1fr}
+  #policies .in{grid-template-columns:repeat(3,1fr)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="livery" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="logo" href="#top" id="top">EUTYLITY</a>
+  <button class="cart-btn" id="openCart" aria-label="Open cart">Cart <span class="badge" id="count">0</span></button>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Cars for your wall. Or your screen.</h1>
+    <p>Illustrated car posters in two formats: a physical print shipped to your door, or a high-resolution file you can print anywhere.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#shop">Shop posters</a>
+      <a class="btn alt" href="#policies">Shipping &amp; license</a>
+    </div>
+  </div>
+  <div class="art" id="heroArt"></div>
+</section>
+
+<section class="formats" aria-label="Formats">
+  <div class="in">
+    <div><h2>Print</h2><p>A3 size, matte or satin finish. Printed on heavyweight paper and shipped flat in a protective sleeve.</p></div>
+    <div><h2>Digital download</h2><p>High-resolution PDF and PNG files you can print anywhere. Download link sent by email once payment is confirmed.</p></div>
+  </div>
+</section>
+
+<main id="shop">
+  <h2 class="sec-title">The collection</h2>
+  <p class="sec-sub">Choose a physical print or an instant digital download.</p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section id="policies">
+  <div class="in">
+    <div><h3>Shipping &amp; returns</h3><p>Prints ship within 3–5 business days. Flat-rate shipping, free over the threshold shown at checkout. Damaged or misprinted? Tell us within 14 days and we’ll reprint it. Digital downloads are non-refundable once delivered.</p></div>
+    <div><h3>Digital license</h3><p>Digital files are for personal use: print them for your home, office or as a gift. You may not resell, redistribute or upload the files, or use them on products you sell.</p></div>
+    <div><h3>How ordering works</h3><p>Place your order, then pay with the link on the confirmation screen. We confirm your payment by email, then ship your print or send your download link.</p></div>
+  </div>
+</section>
+<footer>© <span id="yr"></span> Eutylity. All rights reserved.</footer>
+
+<dialog id="drawer" aria-labelledby="dr-title">
+  <div class="dr">
+    <div class="dr-head"><h2 id="dr-title">Your cart</h2><button class="x" id="closeCart" aria-label="Close cart">×</button></div>
+    <div id="dr-body"></div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ STORE SETTINGS: edit these ============ */
+const CONFIG = {
+  storeName: "Eutylity",
+  symbol: "RM ", currency: "MYR",
+  // Where orders are delivered. Create a free form at formspree.io and paste its ID (e.g. "xyzabcde").
+  formspreeId: "",
+  // Used as a fallback (opens the customer's email app) when formspreeId is empty.
+  orderEmail: "j.krish10026@gmail.com",
+  // Your PayPal.Me name (paypal.me/YOURNAME). Leave "" to show manual payment instructions instead.
+  paypalUser: "",
+  manualPaymentText: "We’ll email you payment instructions shortly.",
+  shipping: { flat: 12, freeOver: 200 },          // based on printed items only
+  sizes: [
+    { id: "a3", label: "A3 (297 × 420 mm)", price: 20 }   // one size for now; add more lines to offer more
+  ],
+  finishes: [
+    { id: "matte", label: "Matte", add: 0 },
+    { id: "satin", label: "Satin", add: 0 }
+  ],
+  digitalPrice: 20,
+  bundlePrice: 45
+};
+
+/* ============ PRODUCTS ============ */
+const PRODUCTS = [
+  { id:"gt3-rs-stuttgart", image:"images/porsche-911-gt3-rs-stuttgart.jpg", name:"911 GT3 RS: Stuttgart Edition",
+    blurb:"Exhibition-style poster with three colour-graded views of the 911 GT3 RS." },
+  { id:"gt3-rs-sunflowers", image:"images/porsche-gt3-rs-sunflowers.jpg", name:"GT3 RS: Sunflower Fields",
+    blurb:"A pink GT3 RS drifting through sunflower hills under a golden-hour sky." },
+  { id:"macan-s", image:"images/porsche-macan-s.jpg", name:"Macan S: Engine Performance",
+    blurb:"Vintage magazine-style spec sheet for the Macan S, in halftone black and white." }
+];
+const BUNDLE = { id:"bundle", name:"Complete digital collection", blurb:"All three posters as high-resolution digital downloads. Save over buying them one by one." };
+
+/* ============ POSTER ARTWORK (inline SVG, no image files needed) ============ */
+const BODIES = {
+  wedge:{ b:"M24 252 L24 234 L74 224 L136 194 L196 192 L250 218 L276 224 L276 252 Z", w:"M142 200 L192 198 L228 216 L120 216 Z" },
+  coupe:{ b:"M24 252 L24 228 Q40 220 84 216 L118 198 Q132 186 158 186 L194 186 Q214 190 226 208 L264 216 Q278 222 278 252 Z", w:"M128 206 Q138 194 158 194 L192 194 Q206 196 214 208 L120 210 Z" },
+  box:  { b:"M24 252 L24 214 L72 210 L98 186 L206 186 L230 210 L276 214 L276 252 Z", w:"M106 194 L152 194 L152 210 L90 210 Z M160 194 L200 194 L218 210 L160 210 Z" }
+};
+function poster(p, mini){
+  if(p.image) return `<img src="${esc(p.image)}" alt="${mini?"":esc(p.name)+" poster"}" loading="lazy">`;
+  const c=p.c, B=BODIES[p.body];
+  const wheel=x=>`<path d="M${x-22} 252 A22 22 0 0 1 ${x+22} 252 Z" fill="${c.ground}"/><circle cx="${x}" cy="246" r="17" fill="#10151C" stroke="${c.ground}" stroke-width="2"/><circle cx="${x}" cy="246" r="7" fill="${c.sun}"/>`;
+  const text = mini ? "" :
+    `<text x="22" y="40" class="pt" font-size="16" fill="${c.car}" opacity=".85">${p.year}</text>
+     <text x="22" y="320" class="pt" font-size="40" font-weight="900" fill="${c.text}">${p.name.toUpperCase()}</text>
+     <text x="22" y="344" font-size="11" fill="${c.text}" opacity=".8" letter-spacing=".5">${p.spec}</text>
+     <rect x="22" y="362" width="256" height="3" fill="${c.sun}"/>`;
+  return `<svg viewBox="0 0 300 400" role="img" aria-label="${mini?"":p.name+" poster artwork"}" xmlns="http://www.w3.org/2000/svg">
+    <style>.pt{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif}</style>
+    <rect width="300" height="400" fill="${c.bg}"/>
+    <circle cx="150" cy="170" r="96" fill="${c.sun}"/>
+    <rect y="263" width="300" height="137" fill="${c.ground}"/>
+    <path d="${B.b}" fill="${c.car}"/>
+    <path d="${B.w}" fill="${c.ground}" opacity=".85"/>
+    ${wheel(84)}${wheel(218)}${text}
+  </svg>`;
+}
+
+/* ============ HELPERS ============ */
+const $ = (s,r=document)=>r.querySelector(s);
+const money = n => CONFIG.symbol + n.toFixed(2);
+const esc = s => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const sizeOf = id => CONFIG.sizes.find(s=>s.id===id);
+const finishOf = id => CONFIG.finishes.find(f=>f.id===id);
+const prodOf = id => PRODUCTS.find(p=>p.id===id);
+
+function printPrice(sizeId, finishId){ return sizeOf(sizeId).price + finishOf(finishId).add; }
+
+/* ============ CATALOG ============ */
+function renderCatalog(){
+  $("#heroArt").innerHTML = poster(PRODUCTS[0]);
+  const cards = PRODUCTS.map(p=>`
+    <article class="card" data-id="${p.id}">
+      <div class="art">${poster(p)}</div>
+      <div class="meta">
+        <h3>${esc(p.name)}</h3>
+        <p class="blurb">${esc(p.blurb)}</p>
+        <fieldset class="fmt"><legend class="sr">Format</legend>
+          <label><input type="radio" name="fmt-${p.id}" value="print" checked><span>Print</span></label>
+          <label><input type="radio" name="fmt-${p.id}" value="digital"><span>Digital</span></label>
+        </fieldset>
+        <div class="opts print-opts">
+          <label>Size<select data-k="size">${CONFIG.sizes.map((s,i)=>`<option value="${s.id}"${i===1?" selected":""}>${s.label}</option>`).join("")}</select></label>
+          <label>Finish<select data-k="finish">${CONFIG.finishes.map(f=>`<option value="${f.id}">${f.label}${f.add?` (+${money(f.add)})`:""}</option>`).join("")}</select></label>
+        </div>
+        <p class="note digital-note" hidden>High-resolution PDF and PNG. Download link emailed after payment is confirmed.</p>
+        <div class="buy"><strong class="price"></strong><button class="btn add" type="button">Add to cart</button></div>
+      </div>
+    </article>`).join("");
+
+  const bundle = `
+    <article class="card" data-id="bundle">
+      <div class="bundle-art" aria-hidden="true">${PRODUCTS.map(p=>poster(p,true)).join("")}</div>
+      <div class="meta">
+        <span class="tag">Best value</span>
+        <h3>${BUNDLE.name}</h3>
+        <p class="blurb">${BUNDLE.blurb}</p>
+        <p class="note">Digital only. Download link emailed after payment is confirmed.</p>
+        <div class="buy"><strong class="price">${money(CONFIG.bundlePrice)}</strong><button class="btn add" type="button">Add to cart</button></div>
+      </div>
+    </article>`;
+
+  $("#grid").innerHTML = cards + bundle;
+  document.querySelectorAll(".card[data-id]").forEach(c=>{ if(c.dataset.id!=="bundle") syncCard(c); });
+}
+
+function cardState(card){
+  const fmt = card.querySelector("input[type=radio]:checked").value;
+  const size = card.querySelector("[data-k=size]").value;
+  const finish = card.querySelector("[data-k=finish]").value;
+  return { fmt, size, finish };
+}
+function syncCard(card){
+  const s = cardState(card);
+  card.querySelector(".print-opts").hidden = s.fmt!=="print";
+  card.querySelector(".digital-note").hidden = s.fmt!=="digital";
+  card.querySelector(".price").textContent = money(s.fmt==="print" ? printPrice(s.size,s.finish) : CONFIG.digitalPrice);
+}
+
+$("#grid").addEventListener("change", e=>{
+  const card = e.target.closest(".card"); if(card && card.dataset.id!=="bundle") syncCard(card);
+});
+$("#grid").addEventListener("click", e=>{
+  const btn = e.target.closest(".add"); if(!btn) return;
+  const card = btn.closest(".card"), id = card.dataset.id;
+  if(id==="bundle"){ addItem({ id:"bundle", name:BUNDLE.name, fmt:"digital", unit:CONFIG.bundlePrice }); }
+  else{
+    const p = prodOf(id), s = cardState(card);
+    if(s.fmt==="print") addItem({ id, name:p.name, fmt:"print", size:s.size, finish:s.finish, unit:printPrice(s.size,s.finish) });
+    else addItem({ id, name:p.name, fmt:"digital", unit:CONFIG.digitalPrice });
+  }
+  const old = btn.textContent; btn.textContent="Added"; setTimeout(()=>btn.textContent=old,1200);
+});
+
+/* ============ CART ============ */
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem("pp-cart")||"[]"); }catch(e){ cart=[]; }
+// Re-price from current config so stale saved prices never survive
+cart = cart.filter(i=>i && i.id && (i.id==="bundle" || prodOf(i.id))).map(i=>{
+  if(i.id==="bundle") i.unit=CONFIG.bundlePrice;
+  else if(i.fmt==="print" && sizeOf(i.size) && finishOf(i.finish)) i.unit=printPrice(i.size,i.finish);
+  else if(i.fmt==="digital") i.unit=CONFIG.digitalPrice; else return null;
+  return i;
+}).filter(Boolean);
+
+const keyOf = i => [i.id,i.fmt,i.size||"",i.finish||""].join("|");
+function save(){ try{ localStorage.setItem("pp-cart",JSON.stringify(cart)); }catch(e){} updateCount(); }
+function updateCount(){ $("#count").textContent = cart.reduce((n,i)=>n+i.qty,0); }
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("on"),1600); }
+
+function addItem(item){
+  const k = keyOf(item), ex = cart.find(i=>keyOf(i)===k);
+  if(ex){
+    if(item.fmt==="digital"){ toast("Already in your cart (digital files are one per order)"); return; }
+    ex.qty = Math.min(ex.qty+1, 20);
+  } else cart.push({ ...item, qty:1 });
+  save(); toast(item.name+" added to cart");
+}
+function totals(){
+  const subtotal = cart.reduce((n,i)=>n+i.unit*i.qty,0);
+  const printSub = cart.filter(i=>i.fmt==="print").reduce((n,i)=>n+i.unit*i.qty,0);
+  const hasPhysical = cart.some(i=>i.fmt==="print");
+  const shipping = !hasPhysical ? 0 : (printSub>=CONFIG.shipping.freeOver ? 0 : CONFIG.shipping.flat);
+  return { subtotal, shipping, total:subtotal+shipping, hasPhysical };
+}
+function itemDesc(i){
+  return i.fmt==="print" ? `Print, ${sizeOf(i.size).label}, ${finishOf(i.finish).label}` : "Digital download";
+}
+function thumb(i){ return i.id==="bundle" ? `<div class="bundle-art" style="padding:2px;gap:2px">${PRODUCTS.slice(0,3).map(p=>poster(p,true)).join("")}</div>` : `<div class="art">${poster(prodOf(i.id),true)}</div>`; }
+function summaryHTML(t){
+  return `<div class="sum">
+    <div><span>Subtotal</span><span>${money(t.subtotal)}</span></div>
+    <div><span>Shipping</span><span>${t.hasPhysical ? (t.shipping? money(t.shipping):"Free") : "Not needed (digital)"}</span></div>
+    <div class="tot"><span>Total</span><span>${money(t.total)}</span></div></div>`;
+}
+
+/* ============ DRAWER VIEWS ============ */
+const dlg = $("#drawer"), body = $("#dr-body"), title = $("#dr-title");
+function open(){ if(!dlg.open) dlg.showModal(); viewCart(); }
+$("#openCart").onclick = open;
+$("#closeCart").onclick = ()=>dlg.close();
+dlg.addEventListener("click", e=>{ if(e.target===dlg) dlg.close(); });
+
+function viewCart(){
+  title.textContent="Your cart";
+  if(!cart.length){ body.innerHTML = `<div class="empty"><p>Your cart is empty.</p><button class="btn" data-act="close">Browse posters</button></div>`; return; }
+  const t = totals();
+  body.innerHTML = cart.map((i,ix)=>`
+    <div class="line">${thumb(i)}
+      <div><h4>${esc(i.name)}</h4><small>${esc(itemDesc(i))}</small>
+        ${i.fmt==="print" ? `<div class="qty"><button data-act="dec" data-i="${ix}" aria-label="Decrease quantity">−</button><span aria-live="polite">${i.qty}</span><button data-act="inc" data-i="${ix}" aria-label="Increase quantity">+</button></div>` : ""}
+        <button class="rm" data-act="rm" data-i="${ix}">Remove</button></div>
+      <strong>${money(i.unit*i.qty)}</strong></div>`).join("")
+    + summaryHTML(t)
+    + (t.hasPhysical && t.shipping ? `<p class="note">Add ${money(CONFIG.shipping.freeOver - cart.filter(i=>i.fmt==="print").reduce((n,i)=>n+i.unit*i.qty,0))} more in prints for free shipping.</p>` : "")
+    + `<button class="btn" style="width:100%;margin-top:14px" data-act="checkout">Checkout</button>`;
+}
+
+function viewCheckout(err){
+  title.textContent="Checkout";
+  const t = totals();
+  body.innerHTML = `<form id="co" novalidate>
+    <div class="field"><label>Full name<input type="text" name="name" autocomplete="name" required></label></div>
+    <div class="field"><label>Email<input type="email" name="email" autocomplete="email" required></label></div>
+    ${t.hasPhysical ? `
+      <div class="field"><label>Street address<input type="text" name="address" autocomplete="street-address" required></label></div>
+      <div class="two field"><label>City<input type="text" name="city" autocomplete="address-level2" required></label>
+        <label>State / region<input type="text" name="region" autocomplete="address-level1"></label></div>
+      <div class="two field"><label>Postal code<input type="text" name="postal" autocomplete="postal-code" required></label>
+        <label>Country<input type="text" name="country" autocomplete="country-name" required></label></div>` :
+      `<p class="note">Digital order: no shipping address needed. Your download link goes to the email above.</p>`}
+    <div class="field" style="margin-top:12px"><label>Notes (optional)<textarea name="notes"></textarea></label></div>
+    ${summaryHTML(t)}
+    <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="#policies" target="_blank">shipping, returns and digital license</a> terms.</span></label>
+    <p class="err" id="err" role="alert">${err?esc(err):""}</p>
+    <div class="stack">
+      <button class="btn" type="submit" id="place">Place order</button>
+      <button class="btn alt" type="button" data-act="back">Back to cart</button>
+    </div></form>`;
+  $("#co").addEventListener("submit", submitOrder);
+}
+
+function viewDone(order, mode){
+  title.textContent="Order placed";
+  const pay = CONFIG.paypalUser
+    ? `<a class="btn" style="text-align:center" target="_blank" rel="noopener" href="https://www.paypal.com/paypalme/${encodeURIComponent(CONFIG.paypalUser)}/${order.total.toFixed(2)}${CONFIG.currency}">Pay ${money(order.total)} with PayPal</a>
+       <p class="note">Add order number <b>${esc(order.id)}</b> in the PayPal note so we can match your payment.</p>`
+    : `<p class="note">${esc(CONFIG.manualPaymentText)}</p>`;
+  const lead = mode==="mailto"
+    ? `<p>Your email app should have opened with your order. <b>Send that email to complete your order.</b> If nothing opened, email ${esc(CONFIG.orderEmail)} with order number ${esc(order.id)}.</p>`
+    : `<p>Thanks, ${esc(order.customer.name)}. We’ve received your order and sent the details to ${esc(order.customer.email)}.</p>`;
+  body.innerHTML = `${lead}<p>Order number: <strong>${esc(order.id)}</strong></p>
+    ${order.items.map(i=>`<p style="margin:4px 0">${i.qty} × ${esc(i.name)} <small>(${esc(itemDesc(i))})</small></p>`).join("")}
+    ${summaryHTML(order)}${pay}
+    <p style="font-size:14px;color:var(--muted)">${order.hasPhysical?"Prints ship within 3–5 business days of confirmed payment. ":""}${order.items.some(i=>i.fmt==="digital")?"Download links are emailed once payment is confirmed.":""}</p>
+    <button class="btn alt" style="width:100%" data-act="close">Continue shopping</button>`;
+}
+
+body.addEventListener("click", e=>{
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  const i = +b.dataset.i, a = b.dataset.act;
+  if(a==="close") dlg.close();
+  else if(a==="inc"){ cart[i].qty=Math.min(cart[i].qty+1,20); save(); viewCart(); }
+  else if(a==="dec"){ cart[i].qty=Math.max(cart[i].qty-1,1); save(); viewCart(); }
+  else if(a==="rm"){ cart.splice(i,1); save(); viewCart(); }
+  else if(a==="checkout") viewCheckout();
+  else if(a==="back") viewCart();
+});
+
+/* ============ ORDER SUBMISSION ============ */
+async function submitOrder(e){
+  e.preventDefault();
+  const f = e.target, v = n => (f.elements[n]?.value||"").trim();
+  const t = totals();
+  const required = ["name","email"].concat(t.hasPhysical?["address","city","postal","country"]:[]);
+  if(required.some(n=>!v(n))) return viewCheckoutKeep(f,"Please fill in all required fields.");
+  if(!/^\S+@\S+\.\S+$/.test(v("email"))) return viewCheckoutKeep(f,"Enter a valid email address.");
+  if(!f.elements.terms.checked) return viewCheckoutKeep(f,"Please accept the terms to continue.");
+
+  const order = {
+    id: "EU-" + Date.now().toString(36).toUpperCase(),
+    date: new Date().toISOString(),
+    customer: { name:v("name"), email:v("email") },
+    shipTo: t.hasPhysical ? { address:v("address"), city:v("city"), region:v("region"), postal:v("postal"), country:v("country") } : null,
+    notes: v("notes"),
+    items: cart.map(i=>({ ...i })),
+    subtotal:t.subtotal, shipping:t.shipping, total:t.total, hasPhysical:t.hasPhysical
+  };
+  const text = [
+    `Order ${order.id}`, `Customer: ${order.customer.name} <${order.customer.email}>`,
+    order.shipTo ? `Ship to: ${order.shipTo.address}, ${order.shipTo.city}, ${order.shipTo.region} ${order.shipTo.postal}, ${order.shipTo.country}` : "Digital only (no shipping)",
+    "", ...order.items.map(i=>`${i.qty} x ${i.name} (${itemDesc(i)}) = ${money(i.unit*i.qty)}`),
+    "", `Subtotal: ${money(order.subtotal)}`, `Shipping: ${money(order.shipping)}`, `Total: ${money(order.total)}`,
+    order.notes ? `\nNotes: ${order.notes}` : ""
+  ].join("\n");
+
+  const btn = $("#place"); btn.disabled = true; btn.textContent = "Placing order…";
+
+  if(CONFIG.formspreeId){
+    try{
+      const r = await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`, {
+        method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+        body: JSON.stringify({ _subject:`New order ${order.id}`, email:order.customer.email, name:order.customer.name, order_id:order.id, total:money(order.total), details:text, order_json:JSON.stringify(order) })
+      });
+      if(!r.ok) throw new Error("bad status");
+    }catch(err){
+      btn.disabled=false; btn.textContent="Place order";
+      return viewCheckoutKeep(f,"We couldn’t send your order. Check your connection and try again.");
+    }
+    finish(order,"sent");
+  } else {
+    location.href = `mailto:${CONFIG.orderEmail}?subject=${encodeURIComponent("New order "+order.id)}&body=${encodeURIComponent(text)}`;
+    finish(order,"mailto");
+  }
+}
+function viewCheckoutKeep(form,msg){ const el=$("#err"); el.textContent=msg; el.scrollIntoView({block:"center"}); }
+function finish(order,mode){
+  cart = []; save(); viewDone(order,mode);
+}
+
+/* ============ INIT ============ */
+$("#yr").textContent = new Date().getFullYear();
+renderCatalog(); updateCount();
+</script>
+</body>
+</html>
